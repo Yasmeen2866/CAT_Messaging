@@ -1,0 +1,155 @@
+dependencies installed:
+react router dom - for multiple web pages
+browser router - to be able to use react router dom
+axios - to fetch apis
+useEffect -   hook in React that allows you to perform side effects in functional components. It can be used for data fetching, subscriptions, or manually changing the DOM, and it runs after every render by default, but can be configured to run only when certain values change.
+
+
+mongodb - kollurususwetha, tV14WbfEsluAhK9a
+mongodb+srv://kollurususwetha:tV14WbfEsluAhK9a@cluster0.nb1kioq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+
+
+
+import { Button } from "@chakra-ui/button";
+import { FormControl, FormLabel } from "@chakra-ui/form-control";
+import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
+import { VStack } from "@chakra-ui/layout";
+import { useToast } from '@chakra-ui/react'
+import { useState } from "react";
+//import axios from "axios";
+import { Link } from 'react-router-dom';
+
+
+
+const Signup = () => {
+  const [show, setShow] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmpassword, setConfirmpassword] = useState('');
+  const toast = useToast();
+  //const history = useHistory();
+
+  const handleClick = () => setShow(!show);
+
+const submitHandler = async () => {
+   <Link to="/chats" style={{ width: '100%' }}>
+        <Button colorScheme = "blue" width="100%" style={{marginTop: 15}}>Go to Destination</Button>
+      </Link>
+ /*  if(!name || !email || !password){
+    toast({
+      title: "You need to fill all the details!",
+      status:"warning",
+      duration: 5000,
+      isClosable: true,
+      position: "top",
+    });
+    return;
+  }
+  if(password!==confirmpassword){
+    toast({
+      title: "Passwords do not match",
+      status:"warning",
+      duration: 5000,
+      isClosable: true,
+      position: "top",
+    });
+    return;
+  }
+  try{
+    const config = {
+      headers: {
+        "Content-type": "applicaton/json",
+      },
+    };
+
+    const {data} = await axios.post(
+      "/api/user", 
+    {name,email,password},
+    config
+  );
+  toast({
+      title: "Registration Successful",
+      status:"success",
+      duration: 5000,
+      isClosable: true,
+      position: "top",
+    });
+
+   
+  }catch(error){
+     toast({
+        title: "An error occurred!",
+        description: error.response && error.response.data.message ? error.response.data.message : error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+  } */
+} 
+      
+  return (
+    <VStack spacing='5px'>
+      <FormControl id="name" isRequired>
+        <FormLabel >Name</FormLabel>
+          <Input
+            placeholder = 'Enter your Name'
+            onChange={(e) => setName(e.target.value)}
+          />
+        
+      </FormControl>
+      <FormControl id="email" isRequired>
+        <FormLabel>Email </FormLabel>
+          <Input
+            placeholder = 'Enter your Email ID'
+            onChange={(e) => setEmail(e.target.value)}
+          />
+      </FormControl>
+
+      <FormControl id="password" isRequired>
+        <FormLabel>Password</FormLabel>
+        <InputGroup size="md">
+          <Input
+            type={show ? "text" : "password"}
+            placeholder="Enter Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <InputRightElement width="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={handleClick}>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      </FormControl>
+      <FormControl id="password" isRequired>
+        <FormLabel>Confirm Password</FormLabel>
+        <InputGroup size="md">
+          <Input
+            type={show ? "text" : "password"}
+            placeholder="Confirm Password"
+            onChange={(e) => setConfirmpassword(e.target.value)}
+          />
+          <InputRightElement width="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={handleClick}>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      </FormControl>
+      
+       <Button
+        colorScheme = "blue"
+        width = "100%"
+        style={{marginTop: 15}}
+        onClick={submitHandler}
+      >
+        Signup
+      </Button> 
+
+    </VStack>
+  )
+}
+
+export default Signup;
